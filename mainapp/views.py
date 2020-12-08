@@ -14,17 +14,6 @@ def products(request):
     context = {
         'title': 'GeekShop - Каталог',
         'products': [
-            {'name': 'Черное худи', 'price': '2 990 руб.'},
-            {'name': 'Джинсы', 'price': '5 800 руб.'},
-        ],
-    }
-    return render(request, 'mainapp/products.html', context)
-
-
-def test_products(request):
-    context = {
-        'title': 'GeekShop - Тест',
-        'products': [
             {'name': 'Худи черного цвета с монограммами adidas Originals',
              'price': '6 090,00 руб.',
              'description': 'Мягкая ткань для свитшотов. Стиль и комфорт – это образ жизни.',
@@ -51,19 +40,5 @@ def test_products(request):
              'src': 'vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png'},
         ],
     }
-    return render(request, 'mainapp/test_products.html', context)
+    return render(request, 'mainapp/products.html', context)
 
-
-def test_context(request):
-    context = {
-        'title': 'добро пожаловать!',
-        'username': 'Irina',
-        'products': [
-            {'name': 'Черное худи', 'price': '2 990 руб.'},
-            {'name': 'Джинсы', 'price': '5 800 руб.'},
-        ],
-        'promotion_products': [
-            # {'name': 'Туфли Dr Martens', 'price': '10 000 руб.'},
-        ],
-    }
-    return render(request, 'mainapp/context.html', context)
