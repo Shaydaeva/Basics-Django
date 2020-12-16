@@ -15,6 +15,6 @@ def products(request, pk=None):
         'products': Product.objects.all(),
         'product_categories': ProductCategory.objects.all(),
     }
-    print(pk)
+
     return render(request, 'mainapp/products.html', context)
 
