@@ -5,15 +5,19 @@ from authapp.forms import UserLoginForm, UserRegisterForm
 
 
 def login(request):
-    form = UserLoginForm(data=request.POST)
-    if request.method == 'POST' and form.is_valid():
-        username = request.POST['username']
-        password = request.POST['password']
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+    # if request.method == 'POST' and form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
 
-        user = auth.authenticate(username=username, password=password)
-        if user and user.is_active:
-            auth.login(request, user)
-            return HttpResponseRedirect(reverse('index'))
+            user = auth.authenticate(username=username, password=password)
+            if user and user.is_active:
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse('index'))
+    else:
+        form = UserLoginForm()
 
     context = {'form': form}
 
@@ -25,7 +29,7 @@ def register(request):
         form = UserRegisterForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('auth:login'))
+            return HttpResponseRedirect(reverse('authapp:login'))
     else:
         form = UserRegisterForm()
 

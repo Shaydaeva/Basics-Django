@@ -13,7 +13,7 @@
         <div class="card-header"><h3 class="text-center font-weight-light my-4">Создать аккаунт</h3>
         </div>
         <div class="card-body">
-            <form action="{% url 'authapp:register' %}" method="post">
+            <form action="{% url 'auth:register' %}" method="post">
                 {% csrf_token %}
                 <div class="form-row">
                     <div class="col-md-6">
@@ -61,7 +61,7 @@
             </form>
         </div>
         <div class="card-footer text-center">
-            <div class="small"><a href="{% url 'authapp:login' %}">Уже есть аккаунт? Авторизоваться</a></div>
+            <div class="small"><a href="{% url 'auth:login' %}">Уже есть аккаунт? Авторизоваться</a></div>
         </div>
     </div>
 </div>
