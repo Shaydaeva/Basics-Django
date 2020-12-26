@@ -17,7 +17,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user and user.is_active:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('products:index'))
     else:
         form = UserLoginForm()
 
@@ -54,10 +54,11 @@ def profile(request):
     else:
         form = UserProfileForm(instance=request.user)
 
+    baskets = Basket.objects.filter(user=request.user)
     context = {
         'title': title,
         'form': form,
-        'baskets': Basket.objects.filter(user=request.user),
+        'baskets': baskets,
     }
 
     return render(request, 'authapp/profile.html', context)
