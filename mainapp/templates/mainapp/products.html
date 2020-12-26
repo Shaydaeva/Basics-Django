@@ -20,7 +20,9 @@
             <h1 class="my-4">GeekShop</h1>
             <div class="list-group">
                 {% for category in product_categories %}
-                <a href="/products/{{ category.id }}" class="list-group-item">{{ category.name }}</a>
+                    {% if category.is_active %}
+                        <a href="/products/{{ category.id }}" class="list-group-item">{{ category.name }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
 
